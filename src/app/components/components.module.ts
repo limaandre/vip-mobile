@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { TabsComponent } from './tabs/tabs.component';
 import { HeaderComponent } from './header/header.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent
   ],
   imports: [
-    IonicModule
+    IonicModule,
+    CommonModule
   ],
   exports: [
     TabsComponent,
