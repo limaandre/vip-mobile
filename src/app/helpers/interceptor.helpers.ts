@@ -8,6 +8,7 @@ import { Observable, from } from 'rxjs';
 import { map, catchError, finalize, mergeMap } from 'rxjs/operators';
 
 import { LoadingService } from './../services/loading.service';
+import { RenderError } from './../interfaces/renderError.interface';
 
 @Injectable()
 export class InterceptorHelpers implements HttpInterceptor {
@@ -29,6 +30,9 @@ export class InterceptorHelpers implements HttpInterceptor {
     }
 
     async execRequest(request: HttpRequest<any>, next: HttpHandler): Promise<any> {
+        if (next) {
+            await this.loadingService.loadingPresent();
+        }
         let headers = new HttpHeaders();
         headers = new HttpHeaders()
             .append('Content-Type', 'application/json');
@@ -41,7 +45,9 @@ export class InterceptorHelpers implements HttpInterceptor {
         return next.handle(request).pipe(
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
-                    this.trataError(event);
+                    if (!event.body.status) {
+                        this.trataError(event);
+                    }
                     return event;
                 }
             }),

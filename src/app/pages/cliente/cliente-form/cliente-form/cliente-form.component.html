@@ -1,21 +1,123 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [textoHeader]="'Clientes'" [redirect]="'cliente-listar'"></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+    <form class="m-b-80" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="ion-margin-vertical ion-padding p-t-0">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+            <div
+                [ngClass]="{'error-message' : codigoCliente.hasError('required') && (codigoCliente.dirty || codigoCliente.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="barcode-outline"></ion-icon>
+                        Código
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : codigoCliente.hasError('required') && (codigoCliente.dirty || codigoCliente.touched)}">
+                    <ion-input placeholder="Código" autocapitalize type="text" inputmode="text"
+                        formControlName="codigoCliente">
+                    </ion-input>
+                </ion-item>
+                <ion-label *ngIf="codigoCliente.hasError('required') && (codigoCliente.dirty || codigoCliente.touched)">
+                    <small class="error-message">O campo Código é obrigatório</small>
+                </ion-label>
+            </div>
+
+            <div class="m-t-20"
+                [ngClass]="{'error-message' : nome.hasError('required') && (nome.dirty || nome.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="person-outline"></ion-icon>
+                        Nome
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : nome.hasError('required') && (nome.dirty || nome.touched)}">
+                    <ion-input placeholder="Nome" autocapitalize type="text" inputmode="text" formControlName="nome">
+                    </ion-input>
+                </ion-item>
+                <ion-label *ngIf="nome.hasError('required') && (nome.dirty || nome.touched)">
+                    <small class="error-message">O campo Nome é obrigatório</small>
+                </ion-label>
+            </div>
+            
+            <div class="m-t-20"
+                [ngClass]="{'error-message' : cpf.hasError('required') && (cpf.dirty || cpf.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="wallet-outline"></ion-icon>
+                        CPF
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : ( cpf.hasError('required')  || cpf.hasError('minlength') || cpf.hasError('maxlength')) && (cpf.dirty || cpf.touched)}">
+                    <ion-input maxlength="14" placeholder="CPF" autocapitalize type="text" inputmode="text" formControlName="cpf" (keyup)="cpfMask()">
+                    </ion-input>
+                </ion-item>
+                <ion-label *ngIf="cpf.hasError('required') && (cpf.dirty || cpf.touched)">
+                    <small class="error-message">O campo CPF é obrigatório</small>
+                </ion-label>
+                <ion-label *ngIf="cpf.hasError('minlength') && (cpf.dirty || cpf.touched)">
+                    <small class="error-message">CPF inválido</small>
+                </ion-label>
+                <ion-label *ngIf="cpf.hasError('maxlength') && (cpf.dirty || cpf.touched)">
+                    <small class="error-message">CPF inválido</small>
+                </ion-label>
+            </div>
+
+            <div class="m-t-20"
+                [ngClass]="{'error-message' : email.hasError('required') && (email.dirty || email.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="mail-outline"></ion-icon>
+                        E-mail
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : email.hasError('required') && (email.dirty || email.touched)}">
+                    <ion-input placeholder="E-mail" autocapitalize type="text" inputmode="email" formControlName="email">
+                    </ion-input>
+                </ion-item>
+                <ion-label *ngIf="email.hasError('required') && (email.dirty || email.touched)">
+                    <small class="error-message">O campo E-mail é obrigatório</small>
+                </ion-label>
+                <ion-label *ngIf="email.hasError('email') && (email.dirty || email.touched)">
+                    <small class="error-message">E-mail inválido</small>
+                </ion-label>
+            </div>
+            
+            
+            <div class="m-t-20"
+                [ngClass]="{'error-message' : sexo.hasError('required') && (sexo.dirty || sexo.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="transgender-outline"></ion-icon>
+                        Sexo
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : sexo.hasError('required') && (sexo.dirty || sexo.touched)}">
+                    <ion-select  formControlName="sexo" placeholder="Selecione" class="w-100">
+                        <ion-select-option *ngFor="let type of sexoSelect" [value]="type">{{type}}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-label *ngIf="sexo.hasError('required') && (sexo.dirty || sexo.touched)">
+                    <small class="error-message">O campo sexo é obrigatório</small>
+                </ion-label>
+            </div>
+
+
+            <div class="m-t-20 text-center">
+                <ion-button color="primary" (click)="submit()" class="w-80 h-3em">
+                    Cadastrar
+                </ion-button>
+            </div>
+
+        </div>
+
+
+
+
+
+    </form>
 </ion-content>
-
-<app-tabs></app-tabs>
-
-

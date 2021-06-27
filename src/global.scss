@@ -24,3 +24,138 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-content {
+  --padding-bottom: 5px;
+  --padding-end: 5px;
+  --padding-start: 10px;
+  --padding-top: 10px;
+}
+
+ion-card-content {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.p-t-0 {
+    padding-top: 0;
+}
+.p-b-0 {
+    padding-bottom: 0;
+}
+.p-10 {
+    padding: 10px;
+}
+
+.p-14 {
+    padding: 14px;
+}
+
+.w-100 {
+    width: 100%;
+}
+.w-100-i {
+    width: 100% !important;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.m-t-0 {
+    margin-top: 0;
+}
+
+.m-t-5 {
+    margin-top: 5px;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.m-t-10-i {
+    margin-top: 10px !important;
+}
+
+.m-t-20 {
+    margin-top: 20px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-b-30 {
+    margin-bottom: 30px;
+}
+
+.m-b-80 {
+    margin-bottom: 80px;
+}
+
+.btn-box {
+    border-color: #403e3929;
+    border-width: thin;
+    border-style: solid;
+    border-radius: .5em;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+
+.font-bold-i {
+    font-weight: bold !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.h-4em {
+    height: 4em;
+}
+
+.error-message {
+    color: var(--ion-color-danger);
+    border-color: var(--ion-color-danger);
+}
+
+ion-button, ion-label h3 {
+    font-weight: bold !important;
+}
+
+ion-button {    
+    --border-radius: 2em;	
+}
+
+ion-content{
+    --ion-background-color: #ffffff;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

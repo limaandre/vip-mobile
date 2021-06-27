@@ -1,0 +1,43 @@
+<ion-header translucent>
+    <ion-toolbar color="primary">
+        <ion-title>{{textoHeader || ''}}</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismissModal()">Fechar</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngFor="let campo of campos; let i = index" class="m-t-20">
+        <ion-label color="primary">
+            <h2 class="m-t-10-i font-bold-i">
+                <ion-icon [name]="campo.icon"></ion-icon>
+                {{campo.desc}}:
+            </h2>
+            <h2 *ngIf="campo.cod === 'sexo'">
+                {{validaSexo(dataList[campo.cod])}}
+            </h2>
+            <h2 *ngIf="campo.cod !== 'sexo'">
+                {{dataList[campo.cod]}}
+            </h2>
+        </ion-label>
+    </div>
+
+    <div class="m-t-20 text-center" *ngIf="dataList.id">
+        <ion-row class="w-100">
+            <ion-col size="6">
+                <ion-button color="primary" (click)="editData()" class="w-100 h-3em">
+                    <ion-icon name="pencil-sharp"></ion-icon>
+                    Editar
+                </ion-button>
+            </ion-col>
+            <ion-col size="6" class="">
+                <ion-button color="danger" (click)="removeData()" class="w-100 h-3em">
+                    <ion-icon name="trash-sharp"></ion-icon>
+                    Remover
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+    </div>
+</ion-content>

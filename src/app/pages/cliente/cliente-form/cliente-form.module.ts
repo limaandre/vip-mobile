@@ -6,7 +6,7 @@ import { ExploreContainerComponentModule } from '../../../explore-container/expl
 
 import { ClienteFormRoutingModule } from './cliente-form-routing.module';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 
@@ -17,6 +17,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
         ClienteFormRoutingModule,
         FormsModule,
         IonicModule,
+        ReactiveFormsModule,
         ExploreContainerComponentModule,
         ComponentsModule
     ]

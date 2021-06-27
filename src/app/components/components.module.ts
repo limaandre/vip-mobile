@@ -1,22 +1,22 @@
+import { ListaDetalhesComponent } from './lista-detalhes/lista-detalhes.component';
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { TabsComponent } from './tabs/tabs.component';
 import { HeaderComponent } from './header/header.component';
 import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   declarations: [
-    TabsComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListaDetalhesComponent
   ],
   imports: [
     IonicModule,
     CommonModule
   ],
   exports: [
-    TabsComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListaDetalhesComponent
   ],
 })
 export class ComponentsModule {}

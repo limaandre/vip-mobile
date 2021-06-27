@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Cliente } from '../interfaces/cliente.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AppService {
 
-    urlApi = 'http://192.168.0.100:3333/';
+    urlApi = environment.backUrl;
 
     constructor(private http: HttpClient) { }
 
@@ -26,6 +26,9 @@ export class AppService {
                 JSON.stringify(param)
             );
         } else if (method === 'put') {
+            if (param?.id) {
+                url += '/' + param.id;
+            }
             request = this.http.put(
                 `${this.urlApi + url}`,
                 JSON.stringify(param)

@@ -1,12 +1,12 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-tabs',
-    templateUrl: './tabs.component.html',
-    styleUrls: ['./tabs.component.scss'],
+    templateUrl: './tabs.page.html',
+    styleUrls: ['./tabs.page.scss'],
 })
-export class TabsComponent implements OnInit {
+export class TabsPage implements OnInit {
 
     constructor(
         private router: Router

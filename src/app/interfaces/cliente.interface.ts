@@ -2,7 +2,8 @@ export interface Cliente {
     id: number;
     codigoCliente: string;
     nome: string;
-    cpf: number;
+    CPF: number;
     email: string;
     sexo: string;
+    show?: boolean;
 }

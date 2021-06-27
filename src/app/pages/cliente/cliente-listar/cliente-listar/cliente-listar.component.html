@@ -1,11 +1,39 @@
-<app-header [textoHeader]="'Cliente Listagem'" [redirect]="'home'" ></app-header>
+<app-header [textoHeader]="'Clientes'" [redirect]="'home'"></app-header>
 
 <ion-content [fullscreen]="true">
+    <ion-searchbar mode="ios" [placeholder]="'Buscar'" (ionClear)="onClear($event)" (ionChange)="onChange($event)">
+    </ion-searchbar>
 
+    <div class="ion-padding text-right p-t-0 p-b-0 text-bold">
+        <ion-button color="primary" fill="outline" size="small" (click)="newData()">
+            + Cadastrar
+        </ion-button>
+    </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <div *ngFor="let cliente of clientes">
+        <ion-card *ngIf="cliente.show" (click)="openData(cliente)">
+            <ion-card-content>
+                <ion-row class="stats-row md hydrated">
+                    <ion-col size="11">
+                        <ion-text color="primary">
+                            <h3 class="font-bold-i truncate">{{cliente.nome}}</h3>
+                        </ion-text>
+                        <p>
+                            <ion-text>
+                                <h5>{{cliente.CPF}}</h5>
+                            </ion-text>
+                    </ion-col>
+                    <ion-col size="1">
+                        <ion-icon color="primary" size="large" name="chevron-forward-outline"></ion-icon>
+                    </ion-col>
+                </ion-row>
+
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="clientes.length === 0" class="m-t-20">
+        <ion-text  color="primary">
+            <h3 class="font-bold-i">Nenhum registro encontrado</h3>
+        </ion-text>
+    </div>
 </ion-content>
-
-<app-tabs></app-tabs>
-
-
