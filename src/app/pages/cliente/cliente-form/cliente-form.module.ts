@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 import { CommonModule } from '@angular/common';
-import { ExploreContainerComponentModule } from '../../../explore-container/explore-container.module';
 
 import { ClienteFormRoutingModule } from './cliente-form-routing.module';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
@@ -18,7 +17,6 @@ import { ComponentsModule } from 'src/app/components/components.module';
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
-        ExploreContainerComponentModule,
         ComponentsModule
     ]
 })

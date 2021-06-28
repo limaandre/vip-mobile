@@ -1,21 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [textoHeader]="'Produtos'" [redirect]="'home'"></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-searchbar mode="ios" [placeholder]="'Buscar'" (ionClear)="onClear($event)" (ionChange)="onChange($event)">
+    </ion-searchbar>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <div class="ion-padding text-right p-t-0 p-b-0 text-bold">
+        <ion-button color="primary" fill="outline" size="small" (click)="newData()">
+            + Cadastrar
+        </ion-button>
+    </div>
+
+    <div *ngFor="let produto of produtos">
+        <ion-card *ngIf="produto.show" (click)="openData(produto)">
+            <ion-card-content>
+                <ion-row class="stats-row md hydrated">
+                    <ion-col size="11">
+                        <ion-text color="primary">
+                            <h3 class="font-bold-i truncate">{{produto.nome}}</h3>
+                        </ion-text>
+                        <p>
+                            <ion-text>
+                                <h5>{{produto.codigoProduto}}</h5>
+                            </ion-text>
+                    </ion-col>
+                    <ion-col size="1">
+                        <ion-icon color="primary" size="large" name="chevron-forward-outline"></ion-icon>
+                    </ion-col>
+                </ion-row>
+
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="produtos.length === 0" class="m-t-20">
+        <ion-text  color="primary">
+            <h3 class="font-bold-i">Nenhum registro encontrado</h3>
+        </ion-text>
+    </div>
 </ion-content>
-
-<app-tabs></app-tabs>
-
-

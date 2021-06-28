@@ -17,7 +17,17 @@
             <h2 *ngIf="campo.cod === 'sexo'">
                 {{validaSexo(dataList[campo.cod])}}
             </h2>
-            <h2 *ngIf="campo.cod !== 'sexo'">
+            <h2 *ngIf="campo.cod === 'valor'">
+                {{dataList[campo.cod].toLocaleString('pt-BR')}}
+            </h2>
+            <h2 *ngIf="campo.cod === 'fabricacao'">
+                {{validaFabricacao(dataList[campo.cod])}}
+            </h2>
+            <h2 *ngIf="
+                campo.cod !== 'sexo' && 
+                campo.cod !== 'valor' && 
+                campo.cod !== 'fabricacao'
+                ">
                 {{dataList[campo.cod]}}
             </h2>
         </ion-label>

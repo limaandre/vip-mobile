@@ -97,7 +97,7 @@
                 </ion-label>
                 <ion-item class="btn-box" lines="none"
                     [ngClass]="{'error-message' : sexo.hasError('required') && (sexo.dirty || sexo.touched)}">
-                    <ion-select  formControlName="sexo" placeholder="Selecione" class="w-100">
+                    <ion-select placeholder="Sexo"  formControlName="sexo" class="w-100">
                         <ion-select-option *ngFor="let type of sexoSelect" [value]="type">{{type}}</ion-select-option>
                     </ion-select>
                 </ion-item>

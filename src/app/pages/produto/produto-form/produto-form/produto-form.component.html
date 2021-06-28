@@ -1,21 +1,122 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [textoHeader]="'Produtos'" [redirect]="'produto-listar'"></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+    <form class="m-b-80" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="ion-margin-vertical ion-padding p-t-0">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+            <div
+                [ngClass]="{'error-message' : codigoProduto.hasError('required') && (codigoProduto.dirty || codigoProduto.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="barcode-outline"></ion-icon>
+                        Código
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : codigoProduto.hasError('required') && (codigoProduto.dirty || codigoProduto.touched)}">
+                    <ion-input placeholder="Código" autocapitalize type="text" inputmode="text"
+                        formControlName="codigoProduto">
+                    </ion-input>
+                </ion-item>
+                <ion-label *ngIf="codigoProduto.hasError('required') && (codigoProduto.dirty || codigoProduto.touched)">
+                    <small class="error-message">O campo Código é obrigatório</small>
+                </ion-label>
+            </div>
+
+            <div class="m-t-20"
+                [ngClass]="{'error-message' : nome.hasError('required') && (nome.dirty || nome.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="cube-outline"></ion-icon>
+                        Nome
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : nome.hasError('required') && (nome.dirty || nome.touched)}">
+                    <ion-input placeholder="Nome" autocapitalize type="text" inputmode="text" formControlName="nome">
+                    </ion-input>
+                </ion-item>
+                <ion-label *ngIf="nome.hasError('required') && (nome.dirty || nome.touched)">
+                    <small class="error-message">O campo Nome é obrigatório</small>
+                </ion-label>
+            </div>
+            
+            <div class="m-t-20"
+                [ngClass]="{'error-message' : valor.hasError('required') && (valor.dirty || valor.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="cash-outline"></ion-icon>
+                        Valor
+                    </h3>
+                </ion-label>             
+
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : ( valor.hasError('required')) && (valor.dirty || valor.touched)}">
+                    <ion-input 
+                        placeholder="Valor" 
+                        autocapitalize 
+                        type="text" 
+                        inputmode="text" 
+                        formControlName="valor"
+                        [brmasker]="{money: true, thousand: '.',  decimalCaracter: ',', decimal: 2}"
+                    >
+                    </ion-input>
+                </ion-item>
+                <ion-label *ngIf="valor.hasError('required') && (valor.dirty || valor.touched)">
+                    <small class="error-message">O campo Valor é obrigatório</small>
+                </ion-label>               
+            </div>
+
+            <div class="m-t-20"
+                [ngClass]="{'error-message' : tamanho.hasError('required') && (tamanho.dirty || tamanho.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="code-outline"></ion-icon>
+                        Tamanho
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : tamanho.hasError('required') && (tamanho.dirty || tamanho.touched)}">
+                    <ion-input placeholder="Tamanho" autocapitalize type="text" inputmode="text" formControlName="tamanho">
+                    </ion-input>
+                </ion-item>
+                <ion-label *ngIf="tamanho.hasError('required') && (tamanho.dirty || tamanho.touched)">
+                    <small class="error-message">O campo Tamanho é obrigatório</small>
+                </ion-label>               
+            </div>
+            
+            
+            <div class="m-t-20"
+                [ngClass]="{'error-message' : fabricacao.hasError('required') && (fabricacao.dirty || fabricacao.touched)}">
+                <ion-label color="primary">
+                    <h3>
+                        <ion-icon name="construct-outline"></ion-icon>
+                        Fabricação
+                    </h3>
+                </ion-label>
+                <ion-item class="btn-box" lines="none"
+                    [ngClass]="{'error-message' : fabricacao.hasError('required') && (fabricacao.dirty || fabricacao.touched)}">
+                    <ion-select  formControlName="fabricacao" placeholder="Selecione" class="w-100">
+                        <ion-select-option *ngFor="let type of fabricacaoSelect" [value]="type">{{type}}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-label *ngIf="fabricacao.hasError('required') && (fabricacao.dirty || fabricacao.touched)">
+                    <small class="error-message">O campo Fabricação é obrigatório</small>
+                </ion-label>
+            </div>
+
+
+            <div class="m-t-20 text-center">
+                <ion-button color="primary" (click)="submit()" class="w-80 h-3em">
+                    Cadastrar
+                </ion-button>
+            </div>
+
+        </div>
+
+
+
+
+
+    </form>
 </ion-content>
-
-<app-tabs></app-tabs>
-
-

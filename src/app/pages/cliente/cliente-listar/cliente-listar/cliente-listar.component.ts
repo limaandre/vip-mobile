@@ -14,6 +14,7 @@ import { ModalController } from '@ionic/angular';
 export class ClienteListarComponent implements OnInit {
 
     clientes: Array<Cliente> = [];
+    filtroSearchBar = null;
 
     constructor(
         private router: Router,
@@ -39,9 +40,13 @@ export class ClienteListarComponent implements OnInit {
     filterData(e) {
         this.clientes = this.clientes.map(cliente => {
             cliente.show = true;
-            const dados = JSON.stringify(cliente);
+            const dados = JSON.stringify(cliente).toLowerCase();
             if (e && !dados.includes(e.detail.value)) {
                 cliente.show = false;
+            }
+
+            if (e?.detail?.value) {
+                this.filtroSearchBar = e;
             }
             return cliente;
         });
@@ -52,6 +57,9 @@ export class ClienteListarComponent implements OnInit {
             if (response.status) {
                 response.data = this.addShow(response.data);
                 this.clientes = response.data;
+                if (this.filtroSearchBar) {
+                    this.onChange(this.filtroSearchBar);
+                }
             }
         });
     }
@@ -63,7 +71,7 @@ export class ClienteListarComponent implements OnInit {
         });
     }
 
-    async openData(dataList) {
+    async openData(dataList: Cliente) {
         const campos = [
             { cod: 'codigoCliente', desc: 'Código', icon: 'barcode-outline' },
             { cod: 'nome', desc: 'Nome', icon: 'person-outline' },
@@ -79,7 +87,7 @@ export class ClienteListarComponent implements OnInit {
         });
         await modal.present();
         modal.onDidDismiss()
-            .then((data) => {
+            .then( async () => {
                 this.search();
             });
     }

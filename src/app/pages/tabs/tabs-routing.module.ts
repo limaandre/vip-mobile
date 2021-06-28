@@ -36,6 +36,10 @@ const routes: Routes = [
                 path: 'produto-form',
                 loadChildren: () => import('../produto/produto-form/produto-form.module').then(m => m.ProdutoFormModule)
             },
+            {
+                path: 'produto-form/:id',
+                loadChildren: () => import('../produto/produto-form/produto-form.module').then(m => m.ProdutoFormModule)
+            },
         ]
     }
 ];

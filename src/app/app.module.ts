@@ -5,11 +5,8 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorHelpers } from './helpers/interceptor.helpers';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 
 @NgModule({
     declarations: [AppComponent],
@@ -18,7 +15,7 @@ import { AppComponent } from './app.component';
         BrowserModule,
         IonicModule.forRoot(),
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
     ],
     providers: [
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

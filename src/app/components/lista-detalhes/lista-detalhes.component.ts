@@ -49,6 +49,18 @@ export class ListaDetalhesComponent implements OnInit {
         }
     }
 
+    validaFabricacao(valor) {
+        valor = valor.toLowerCase();
+        switch (valor) {
+            case 'n':
+                return 'Nacional';
+            case 'i':
+                return 'Importado';
+            default:
+                return '';
+        }
+    }
+
     async removeData() {
         const alert = await this.alertController.create({
             header: 'Atenção',

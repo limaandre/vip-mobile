@@ -5,4 +5,5 @@ export interface Produto {
     fabricacao: string;
     tamanho: string;
     valor: number;
+    show?: boolean;
 }
